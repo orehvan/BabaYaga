@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn0u7ojdxvxe"]
+
+[ext_resource type="Script" path="res://dialog_module/content/dialog/avatar_icon.gd" id="1_e58v5"]
+[ext_resource type="Texture2D" uid="uid://b6f7tbvupfnjd" path="res://icon.svg" id="1_lppm2"]
+
+[node name="AvatarIcon" type="PanelContainer"]
+offset_right = 80.0
+offset_bottom = 107.0
+script = ExtResource("1_e58v5")
+name_character = null
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 60)
+layout_mode = 2
+texture = ExtResource("1_lppm2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1

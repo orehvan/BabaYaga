@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://dysd3klarqv1j"]
+
+[ext_resource type="PackedScene" uid="uid://dmiy4mretoxvf" path="res://dialog_module/content/dialog/recive_dialog_line.tscn" id="1_b2358"]
+[ext_resource type="Script" path="res://dialog_module/content/dialog/dialog_recive_list.gd" id="1_m2s1a"]
+
+[node name="DialogReciveList" type="PanelContainer"]
+offset_right = 611.0
+offset_bottom = 281.0
+script = ExtResource("1_m2s1a")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ReciveList" type="VBoxContainer" parent="MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ReciveDialogLine" parent="MarginContainer/ReciveList" instance=ExtResource("1_b2358")]
+layout_mode = 2
+text = "[rainbow]Hello[/rainbow]  [b]world[/b]"
