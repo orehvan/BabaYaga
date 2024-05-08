@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://bgx6hh3bu0i0r"]
+
+[ext_resource type="Script" path="res://dialog_module/content/dialog/dialog.gd" id="1_cyif6"]
+[ext_resource type="Texture2D" uid="uid://cat2soec7vgbg" path="res://image.png" id="1_e3c6h"]
+[ext_resource type="PackedScene" uid="uid://c4nsm0n07jkq4" path="res://dialog_module/content/dialog/dialog_line.tscn" id="2_ta4js"]
+[ext_resource type="PackedScene" uid="uid://dysd3klarqv1j" path="res://dialog_module/content/dialog/dialog_recive_list.tscn" id="3_3g1nd"]
+
+[node name="Dialog" type="CanvasLayer"]
+script = ExtResource("1_cyif6")
+
+[node name="Image" type="Sprite2D" parent="."]
+position = Vector2(1602, 333)
+texture = ExtResource("1_e3c6h")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -378.0
+offset_right = 378.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/Panel/MarginContainer"]
+layout_mode = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="DialogHistory" type="VBoxContainer" parent="Control/Panel/MarginContainer/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Panel" parent="Control/Panel/MarginContainer/VBoxContainer/ScrollContainer/DialogHistory" instance=ExtResource("2_ta4js")]
+layout_mode = 2
+spacer_size = 100.0
+time_print_char = 0.1
+name_character = "Name"
+
+[node name="Panel2" parent="Control/Panel/MarginContainer/VBoxContainer/ScrollContainer/DialogHistory" instance=ExtResource("2_ta4js")]
+layout_mode = 2
+direction_avatar = 0
+spacer_size = 100.0
+time_print_char = 0.2
+name_character = "Name"
+
+[node name="Panel" parent="Control/Panel/MarginContainer/VBoxContainer" instance=ExtResource("3_3g1nd")]
+layout_mode = 2
+
+[connection signal="pressed" from="Control/Panel/MarginContainer/VBoxContainer/Panel" to="." method="_on_panel_pressed"]

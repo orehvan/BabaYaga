@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://c4nsm0n07jkq4"]
+
+[ext_resource type="Script" path="res://dialog_module/content/dialog/dialog_line.gd" id="1_16a8j"]
+[ext_resource type="PackedScene" uid="uid://bn0u7ojdxvxe" path="res://dialog_module/content/dialog/avatar_icon.tscn" id="1_r7ycf"]
+[ext_resource type="Texture2D" uid="uid://b6f7tbvupfnjd" path="res://icon.svg" id="2_yr04n"]
+
+[node name="DialogLine" type="PanelContainer"]
+custom_minimum_size = Vector2(20, 20)
+offset_right = 815.0
+offset_bottom = 127.0
+script = ExtResource("1_16a8j")
+texture_icon = ExtResource("2_yr04n")
+name_character = null
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="LeftIcon" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_r7ycf")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+texture_icon = ExtResource("2_yr04n")
+name_character = ""
+
+[node name="LeftSpacer" type="Control" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginText" type="MarginContainer" parent="MarginContainer/HBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Text" type="RichTextLabel" parent="MarginContainer/HBoxContainer/PanelContainer/MarginText"]
+unique_name_in_owner = true
+layout_mode = 2
+bbcode_enabled = true
+text = "Hello world"
+fit_content = true
+scroll_active = false
+visible_characters = 11
+
+[node name="RightSpacer" type="Control" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="RightIcon" parent="MarginContainer/HBoxContainer" instance=ExtResource("1_r7ycf")]
+unique_name_in_owner = true
+layout_mode = 2
+texture_icon = ExtResource("2_yr04n")
+name_character = ""
+
+[node name="TimerTextShowing" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.05
+
+[connection signal="timeout" from="TimerTextShowing" to="." method="_on_timer_text_showing_timeout"]
